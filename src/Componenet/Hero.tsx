@@ -1,7 +1,13 @@
 import { useState, useEffect } from "react";
 
+// Import your images - update these paths to match your actual image files
+import newbornImage from "../assets/portrait-adorable-newborn-baby.jpg";
+import smileImage from "../assets/sleeping-infant-peacefully-laying-little-newborn-with-cute-grey-hat-toy-bear.jpg";
+import adventureImage from"../assets/mother-spending-time-with-her-beloved-child.jpg"
+import familyImage from "../assets/sleeping-infant-peacefully-laying-little-newborn-with-cute-grey-hat-toy-bear.jpg";
+
 interface BabySlide {
- image:string;
+  image: string;
   id: number;
   title: string;
   description: string;
@@ -13,10 +19,10 @@ interface BabySlide {
 const Hero: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
 
-  // Baby picture data - replace with your actual images
+  // Baby picture data with actual images
   const babySlides: BabySlide[] = [
     {
-     image: 
+      image: newbornImage,
       id: 1,
       title: "Newborn Bliss",
       description: "Capturing the first precious days",
@@ -25,6 +31,7 @@ const Hero: React.FC = () => {
       duration: 5000, // 5 seconds
     },
     {
+      image: smileImage,
       id: 2,
       title: "First Smiles",
       description: "Those unforgettable first smiles",
@@ -33,6 +40,7 @@ const Hero: React.FC = () => {
       duration: 4000, // 4 seconds
     },
     {
+      image: adventureImage,
       id: 3,
       title: "Tiny Adventures",
       description: "Exploring the world together",
@@ -41,6 +49,7 @@ const Hero: React.FC = () => {
       duration: 4500, // 4.5 seconds
     },
     {
+      image: familyImage,
       id: 4,
       title: "Family Love",
       description: "Precious moments with family",
@@ -122,7 +131,12 @@ const Hero: React.FC = () => {
                   <div
                     className={`w-full h-full bg-gradient-to-br ${slide.bgColor} flex flex-col items-center justify-center p-8`}
                   >
-                    <div className="text-8xl mb-4">{slide.icon}</div>
+                    {/* Image display */}
+                    <img
+                      src={slide.image}
+                      alt={slide.title}
+                      className="w-32 h-32 object-cover rounded-full mb-4 border-4 border-white shadow-lg"
+                    />
                     <h3 className="text-2xl font-bold text-gray-800 mb-2">
                       {slide.title}
                     </h3>
