@@ -1,14 +1,18 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
+import { SlMagnifier } from "react-icons/sl";
 
 const Navbar = () => {
   const [isSearchExpanded, setIsSearchExpanded] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const searchRef = useRef(null);
+  const searchRef = useRef<HTMLDivElement>(null);
 
   // Close search when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
+      if (
+        searchRef.current &&
+        !searchRef.current.contains(event.target as Node)
+      ) {
         setIsSearchExpanded(false);
       }
     };
@@ -27,6 +31,32 @@ const Navbar = () => {
           <div className="flex items-center">
             <i className="fas fa-baby text-3xl text-pink-500 mr-2"></i>
             <span className="text-2xl font-bold text-blue-800">My Store</span>
+          </div>
+
+          {/* Search bar - Centered */}
+          <div className="order-last sm:order-none w-full sm:w-auto mt-4 sm:mt-0">
+            <form
+              className="group relative max-w-md mx-auto"
+              role="search"
+              aria-label="Site Search"
+            >
+              <label htmlFor="navbar-search" className="sr-only">
+                Search
+              </label>
+              <input
+                id="navbar-search"
+                type="text"
+                placeholder="Search..."
+                className="w-full sm:w-[200px] group-hover:w-[300px] transition-all duration-300 rounded-full border border-gray-300 dark:border-gray-600 px-4 py-1 focus:outline-none focus:border-orange-400 dark:bg-gray-700 dark:text-white"
+              />
+              <button
+                type="submit"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-300 font-semibold hover:text-orange-500 transition-colors duration-300"
+                aria-label="Search"
+              >
+                <SlMagnifier />
+              </button>
+            </form>
           </div>
 
           {/* Desktop Navigation */}
@@ -88,21 +118,30 @@ const Navbar = () => {
                 onClick={() => {
                   setIsSearchExpanded(!isSearchExpanded);
                   if (!isSearchExpanded) {
-                    setTimeout(
-                      () => searchRef.current.querySelector("input").focus(),
-                      100
-                    );
+                    setTimeout(() => {
+                      const input = searchRef.current?.querySelector("input");
+                      if (input) input.focus();
+                    }, 100);
                   }
                 }}
+                aria-label="Search"
               >
                 <i className="fas fa-search text-xl"></i>
               </button>
             </div>
 
-            <a href="#" className="text-blue-700 hover:text-pink-500">
+            <a
+              href="#"
+              className="text-blue-700 hover:text-pink-500"
+              aria-label="Shopping Cart"
+            >
               <i className="fas fa-shopping-cart text-xl"></i>
             </a>
-            <a href="#" className="text-blue-700 hover:text-pink-500">
+            <a
+              href="#"
+              className="text-blue-700 hover:text-pink-500"
+              aria-label="User Account"
+            >
               <i className="fas fa-user text-xl"></i>
             </a>
 
@@ -110,6 +149,7 @@ const Navbar = () => {
             <button
               className="md:hidden text-blue-700"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle Menu"
             >
               <i className="fas fa-bars text-2xl"></i>
             </button>
@@ -137,6 +177,7 @@ const Navbar = () => {
               <a
                 href="/"
                 className="flex items-center text-blue-700 hover:text-pink-500 py-2"
+                onClick={() => setIsMobileMenuOpen(false)}
               >
                 <i className="fas fa-home w-8 text-center"></i>
                 <span className="ml-2">Home</span>
@@ -146,6 +187,7 @@ const Navbar = () => {
               <a
                 href="/products"
                 className="flex items-center text-blue-700 hover:text-pink-500 py-2"
+                onClick={() => setIsMobileMenuOpen(false)}
               >
                 <i className="fas fa-tshirt w-8 text-center"></i>
                 <span className="ml-2">Products</span>
@@ -155,6 +197,7 @@ const Navbar = () => {
               <a
                 href="/about"
                 className="flex items-center text-blue-700 hover:text-pink-500 py-2"
+                onClick={() => setIsMobileMenuOpen(false)}
               >
                 <i className="fas fa-info-circle w-8 text-center"></i>
                 <span className="ml-2">About</span>
@@ -164,6 +207,7 @@ const Navbar = () => {
               <a
                 href="/contact"
                 className="flex items-center text-blue-700 hover:text-pink-500 py-2"
+                onClick={() => setIsMobileMenuOpen(false)}
               >
                 <i className="fas fa-envelope w-8 text-center"></i>
                 <span className="ml-2">Contact</span>
