@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 // Import your images - update these paths to match your actual image files
 import newbornImage from "../assets/portrait-adorable-newborn-baby.jpg";
 import smileImage from "../assets/sleeping-infant-peacefully-laying-little-newborn-with-cute-grey-hat-toy-bear.jpg";
-import adventureImage from"../assets/mother-spending-time-with-her-beloved-child.jpg"
+import adventureImage from"../assets/mother-spending-time-with-her-beloved-child (1).jpg"
 import familyImage from "../assets/sleeping-infant-peacefully-laying-little-newborn-with-cute-grey-hat-toy-bear.jpg";
 
 interface BabySlide {
