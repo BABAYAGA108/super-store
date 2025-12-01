@@ -112,6 +112,7 @@ const Hero: React.FC = () => {
               >
                 Book Session
               </button>
+              
             </div>
           </div>
 
@@ -120,6 +121,7 @@ const Hero: React.FC = () => {
             <div className="relative h-96 rounded-3xl overflow-hidden shadow-2xl">
               {/* Slides */}
               {babySlides.map((slide, index) => (
+                
                 <div
                   key={slide.id}
                   className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
