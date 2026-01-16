@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-
 // Import your images - update these paths to match your actual image files
 import newbornImage from "../assets/portrait-adorable-newborn-baby.jpg";
 import smileImage from "../assets/sleeping-infant-peacefully-laying-little-newborn-with-cute-grey-hat-toy-bear.jpg";
